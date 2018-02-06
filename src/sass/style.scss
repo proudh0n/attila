@@ -13,19 +13,36 @@
    ========================================================================== */
 
 @supports (flex-wrap: wrap) {
-    body {
-    	display: flex;
+	body {
+		display: flex;
 		flex-direction: column;
 		min-height: 100vh;
-    }
-	#wrapper {
-		flex: 1;
 	}
+}
+
+@mixin display-flex {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	align-items: center;
+}
+
+@mixin flex-horizontal {
+	@include display-flex();
+	flex-direction: row;
+}
+
+@mixin flex-vertical {
+	@include display-flex();
+	flex-direction: column;
 }
 
 html {
 	font-size: 62.5%;
 	overflow-x: hidden;
+	background: $dark-blue;
+	font-family: 'Roboto Slab', serif;
+	color: $white;
 }
 
 html.menu-active,
@@ -34,8 +51,9 @@ html.menu-active,
 }
 
 body {
-	font: 400 2em / 1.5em 'Cardo', serif;
-	color: $color-blue-30;
+	font: 400 2em / 1.5em 'Roboto Slab', serif;
+	background: $dark-blue;
+	color: $white;
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -45,25 +63,25 @@ input,
 button,
 select,
 textarea {
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
 	transition: all ease-out 0.2s;
 }
 
 a {
-	color: $color-blue-15;
+	color: $white;
 	text-decoration: none;
 	font-weight: 400;
 	transition: all ease-out 0.2s;
 }
 a:hover,
 a:focus {
-	color: $color-black;
+	color: $light-blue;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
 	text-rendering: optimizeLegibility;
-	color: $color-black;
+	color: $white;
 }
 
 h1 {
@@ -97,7 +115,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 p, ul, ol {
-    margin: 2em auto;
+	margin: 2em auto;
+}
+
+p {
+	text-align: justify;
 }
 
 ul {
@@ -111,12 +133,12 @@ ol > li:before {
 	position: absolute;
 	width: 1.5em;
 	margin-left: -2em;
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
 	font-size: 1em;
 	font-weight: 500;
 	line-height: 1.5em;
 	text-align: right;
-	color: $color-black;
+	color: $white;
 }
 ul > li:before {
 	margin-top: 0.25em;
@@ -141,7 +163,7 @@ hr {
     height: 1px;
     margin: 2em 0;
     padding: 0;
-	background: $color-gray-90;
+	background: $darker-blue;
     border: 0;
 }
 
@@ -150,11 +172,12 @@ blockquote {
     padding: 1em;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    border-left: 0.25em solid $color-gray-90;
+    border-left: 0.25em solid $darker-blue;
     font-style: italic;
     font-weight: 400;
-    color: $color-blue-30;
-    background: $color-gray-98;
+	color: $white;
+	border-radius: $radius;
+    background: $darker-blue;
 }
 blockquote p {
 	margin: 1em auto;
@@ -167,11 +190,11 @@ blockquote p:last-child {
 }
 em, i {
 	font-style: italic;
-	color: $color-blue-15;
+	color: $white;
 }
 strong, b {
 	font-weight: 700;
-	color: $color-blue-15;
+	color: $white;
 }
 
 small {
@@ -209,8 +232,9 @@ code, tt {
 	font-family: 'Inconsolata', monospace, sans-serif;
 	font-size: 0.75em;
 	white-space: pre;
-	background: $color-gray-98;
-    border: 1px solid $color-gray-90;
+	background: $darker-blue;
+	border: 1px solid $darker-blue;
+	border-radius: $radius;
 	top: -2px;
 }
 
@@ -222,7 +246,7 @@ pre {
 	font-family: 'Inconsolata', monospace, sans-serif;
 	white-space: pre;
 	background: $color-gray-98;
-    border: 1px solid $color-gray-90;
+    border: 1px solid $darker-blue;
 	box-sizing: border-box;
 }
 pre .lines {
@@ -232,7 +256,7 @@ pre .lines {
 	left: 0;
 	top: 0;
 	padding: 1.334em 0;
-	border-right: 1px solid $color-gray-90;
+	border-right: 1px solid $darker-blue;
 	font-size: 0.75em;
 	line-height: 2em;
 	text-align: right;
@@ -263,14 +287,14 @@ kbd {
     display: inline-block;
     margin-bottom: 0.5em;
     padding: 1px 8px;
-    border: $color-gray-90 1px solid;
+    border: $darker-blue 1px solid;
     color: $color-blue-30;
-    text-shadow: $color-white 0 1px 0;
+    text-shadow: $white 0 1px 0;
     font-size: 0.9em;
     font-weight: bold;
     background: $color-gray-98;
     border-radius: 4px;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 $color-white inset;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 0 $white inset;
 }
 
 table {
@@ -278,7 +302,7 @@ table {
 	max-width: 100%;
 	margin: 2em 0;
 	background-color: transparent;
-	border: 1px solid $color-gray-90;
+	border: 1px solid $darker-blue;
 }
 
 table th,
@@ -287,15 +311,15 @@ table td {
     padding: 0.5em;
     line-height: 0.95em;
     text-align: left;
-    border: 1px solid $color-gray-90;
+    border: 1px solid $darker-blue;
 }
 table th {
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
 	font-weight: 500;
 	font-size: 0.75em;
 	line-height: 1.25em;
 	padding: 0.667em;
-	color: $color-black;
+	color: $darker-blue;
 }
 table td:after {
 	position: absolute;
@@ -340,6 +364,39 @@ img {
    Header
    ========================================================================== */
 
+.logo {
+	font-weight: bold;
+	color: $white;
+	font-size: 2.5rem;
+	@include flex-horizontal;
+
+	@media only screen and (max-width: 480px) {
+		&.stackable {
+			@include flex-vertical;
+		}
+		line-height: 2.25rem;
+
+		&.big {
+			line-height: 4.5rem;
+			margin-bottom: 1rem;
+		}
+    }
+
+	&.big {
+		font-size: 5rem;
+	}
+
+    &.hidden {
+        pointer-events: none;
+    }
+
+    span {
+        &:nth-of-type(2) {
+            font-weight: 300;
+        }
+    }
+}
+
 #blog-header {
 	position: relative;
 	padding: 6em 0;
@@ -353,11 +410,11 @@ img {
 	bottom: 0;
 	margin-left: -16em;
 	content: '';
-	background: $color-gray-90;
+	background: $darker-blue;
 }
 #blog-header.has-cover {
 	padding: 9em 0 10em;
-	background: $color-black;
+	background: $darker-blue;
 	overflow: hidden;
 	text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
@@ -380,7 +437,7 @@ img {
 	left: 0;
 	top: 0;
 	z-index: 5;
-	background: no-repeat scroll center center / cover $color-black;
+	background: no-repeat scroll center center / cover $darker-blue;
 	animation: 0.5s ease-in forwards fadein;
 }
 .blog-cover:after {
@@ -391,11 +448,11 @@ img {
 	bottom: 0;
 	z-index: 8;
 	content: '';
-	background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
+	background: -webkit-linear-gradient(top,  rgba(19,41,61,0) 0%,rgba(19,41,61,0.5) 100%);
+	background: linear-gradient(to bottom,  rgba(19,41,61,0) 0%,rgba(19,41,61,0.5) 100%);
 }
 .blog-logo {
-	position: fixed;
-	max-width: 2em;
+	position: absolute;
 	left: 0;
 	top: 0;
 	margin: 1em;
@@ -411,7 +468,7 @@ img {
 	z-index: 10;
 	margin: 0;
 	padding: 0;
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
 	font-weight: 700;
 	font-size: 2em;
 	line-height: 1em;
@@ -421,7 +478,7 @@ img {
 	font-size: 3em;
 }
 .has-cover .blog-name {
-	color: $color-white;
+	color: $white;
 }
 .blog-name a {
 	text-decoration: none;
@@ -441,30 +498,8 @@ img {
 	font-size: 1.5em;
 }
 .has-cover .blog-description {
-	color: $color-white;
+	color: $white;
 }
-
-#wrapper {
-	position: relative;
-	padding-right: 0;
-	transition: all ease-out 0.25s;
-}
-#wrapper .hidden-close {
-	display: none;
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	left: 0;
-	top: 0;
-	z-index: 350;
-}
-.menu-active #wrapper {
-	padding-right: 16em;
-}
-.menu-active #wrapper .hidden-close {
-	display: block;
-}
-
 
 .inner {
 	max-width: 32em;
@@ -494,31 +529,32 @@ img {
 	height: 1.5em;
 	margin-bottom: 1em;
 	padding: 0.5em 1.25em;
-	border: 1px solid $color-blue-80;
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
 	font-size: 0.75em;
-	line-height: 1.667em;
+	line-height: 1.5em;
 	text-shadow: none;
-	color: $color-blue-60;
+	color: $white;
 	cursor: pointer;
-	background: $color-white;
-	transition: color,border-color ease 0.3s;
+	background: $darker-blue;
+	transition: color, background-color, opacity ease 0.3s;
 	border-radius: 2em;
+	opacity: .5;
 }
 .nav-button a:hover,
 .nav-button a:focus {
-	color: $primary-color;
-	border-color: $primary-color;
+	opacity: 1;
+	color: $white;
+	border-color: $darker-blue;
 }
 .cover-active .nav-button a {
-	color: $color-white;
+	color: $white;
 	border-color: rgba(255,255,255,0.5);
 	background: transparent;
 }
 .cover-active .nav-button a:hover,
 .cover-active .nav-button a:focus {
-	color: $color-white;
-	border-color: $color-white;
+	color: $white;
+	border-color: $white;
 }
 .nav-button a i {
 	display: inline-block;
@@ -531,151 +567,13 @@ img {
 }
 
 /* ==========================================================================
-   Menu
-   ========================================================================== */
-
-#menu {
-	position: fixed;
-	width: 16em;
-	height: 100%;
-	top: 0;
-	right: 0;
-	background: $color-gray-95;
-	border-left: 1px solid $color-gray-90;
-	z-index: 400;
-	overflow: hidden;
-	font-family: 'Fira Sans', sans-serif;
-	box-shadow: inset -2px 0 7px rgba(0,0,0,0.1);
-	transform: translate3d(16em,0,0);
-	transition: all ease-out 0.25s;
-}
-.menu-active #menu {
-	transform: translate3d(0,0,0);
-}
-#menu .close-button {
-	position: absolute;
-	width: 2em;
-	height: 2em;
-	top: 0;
-	right: 0;
-	margin: 1em;
-	border: 1px solid $color-blue-80;
-	color: transparent;
-	cursor: pointer;
-	transition: all ease 0.3s;
-	border-radius: 2em;
-	box-sizing: border-box;
-	z-index: 500;
-}
-#menu .close-button:hover,
-#menu .close-button:focus {
-	transform: rotate(180deg);
-	border-color: $primary-color;
-}
-#menu .close-button:after,
-#menu .close-button:before {
-	position: absolute;
-	width: 1em;
-	height: 1px;
-	left: 50%;
-	top: 50%;
-	margin-left: -0.5em;
-	content: '';
-	background: $color-blue-60;
-	transition: all ease 0.3s;
-}
-#menu .close-button:hover:after,
-#menu .close-button:hover:before,
-#menu .close-button:focus:after,
-#menu .close-button:focus:before {
-	background: $primary-color;
-}
-#menu .close-button:after {
-	transform: rotate(45deg);
-}
-#menu .close-button:before {
-	transform: rotate(-45deg);
-}
-#menu .nav-wrapper {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	overflow-x: hidden;
-	overflow-y: scroll;
-	box-sizing: border-box;
-}
-#menu .nav-label {
-	display: block;
-	padding: 1.667em 2em;
-	margin: 0;
-	opacity: 0.5;
-	font-size: 0.75em;
-	line-height: 2em;
-}
-#menu ul {
-	position: relative;
-	width: 100%;
-	margin: auto;
-	padding: 0;
-}
-#menu li {
-	position: relative;
-}
-#menu li:before {
-	position: absolute;
-	width: 100%;
-	height: 1px;
-	left: 1.5em;
-	bottom: 0;
-	margin: auto;
-	content: '';
-	background: rgba(0,0,0,0.1);
-}
-#menu li:last-child:before {
-	display: none;
-}
-#menu li.active {}
-#menu li.active:after {
-	position: absolute;
-	content: '';
-	width: 0.2em;
-	height: 100%;
-	left: 0;
-	top: 0;
-	background: $primary-color;
-}
-#menu li a {
-	display: block;
-	padding: 1.25em 1.5em;
-	color: $color-blue-15;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-	font-weight: 400;
-}
-#menu li a:hover,
-#menu li a:focus {
-	color: $color-black;
-	background: rgba(0,0,0,0.05);
-}
-#menu li a i {
-	position: relative;
-	top: -1px;
-	font-size: 0.8em;
-	color: inherit;
-}
-#menu li.active a {
-	color: $color-black;
-	font-weight: 500;
-}
-
-/* ==========================================================================
    Reading Progress
    ========================================================================== */
 
 .progress-container {
-	position: fixed;
+	position: fixed !important;
 	width: 100%;
-	height: 4px;
+	height: 5px;
 	left: 0;
 	top: 0;
 	z-index: 1000;
@@ -688,7 +586,7 @@ img {
 .progress-bar {
 	display: block;
 	width: 0;
-	height: 1px;
+	height: 50%;
 	background: $primary-color;
 	box-shadow: 0 0 1px $primary-color, 0 0 3px $primary-color;
 }
@@ -700,9 +598,9 @@ img {
 #footer {
 	position: relative;
 	z-index: 20;
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
 	line-height: 1em;
-	padding-bottom: 6em;
+	padding: 3em 0;
 }
 .credits {
 	text-align: center;
@@ -715,14 +613,9 @@ img {
 .credits a {
 	color: inherit;
 }
-.credits span {
+.credits>span {
 	display: block;
-}
-.credits-theme {
-	float: left;
-}
-.credits-software {
-	float: right;
+	margin-top: 1em;
 }
 
 /* ==========================================================================
@@ -742,7 +635,7 @@ img {
 	bottom: 0;
 	margin-left: -16em;
 	content: '';
-	background: $color-gray-90;
+	background: $darker-blue;
 }
 #blog-author .post-author {
 	margin-top: -5em;
@@ -754,7 +647,7 @@ img {
 	margin-top: 0.5em;
 }
 #blog-author.has-cover .post-author-avatar img {
-	border: 0.125em solid $color-white;
+	border: 0.125em solid $white;
 }
 #blog-author .post-author-name {
 	padding: 0.334em 0 0;
@@ -766,7 +659,7 @@ img {
 	font-weight: 500;
 	letter-spacing: 0.025em;
 	line-height: 1.334em;
-	color: $color-white;
+	color: $white;
 }
 #blog-author.has-cover .post-author-about {
 	margin-top: -0.667em;
@@ -777,7 +670,7 @@ img {
 	position: relative;
 }
 .container .post {
-	padding: 4em 0;
+	padding: 2em 0;
 }
 .container .post:after {
 	position: absolute;
@@ -787,7 +680,7 @@ img {
 	bottom: 0;
 	margin-left: -16em;
 	content: '';
-	background: $color-gray-90;
+	background: $darker-blue;
 }
 .container .post.featured .post-title:after {
 	position: absolute;
@@ -803,7 +696,7 @@ img {
 	content: '\e800';
 	color: inherit;
 	text-align: center;
-	color: $color-gray-90;
+	color: $darker-blue;
 }
 
 /* ==========================================================================
@@ -821,7 +714,7 @@ img {
 	top: 0;
 	margin-left: -16em;
 	content: '';
-	background: $color-gray-90;
+	background: $darker-blue;
 }
 
 /* ==========================================================================
@@ -834,7 +727,7 @@ img {
 }
 #post-header.has-cover {
 	padding: 16em 0 2em;
-	background: $color-black;
+	background: $darker-blue;
 	overflow: hidden;
 	text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
@@ -845,7 +738,7 @@ img {
 	left: 0;
 	top: 0;
 	z-index: 5;
-	background: no-repeat scroll center center / cover $color-black;
+	background: no-repeat scroll center center / cover $darker-blue;
 	animation: 0.5s ease-in forwards fadein;
 }
 .post-cover:after {
@@ -856,8 +749,8 @@ img {
 	bottom: 0;
 	z-index: 8;
 	content: '';
-	background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
-	background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
+	background: -webkit-linear-gradient(top,  rgba(19,41,61,0) 0%,rgba(19,41,61,0.5) 100%);
+	background: linear-gradient(to bottom,  rgba(19,41,61,0) 0%,rgba(19,41,61,0.5) 100%);
 }
 .post {
 	position: relative;
@@ -871,10 +764,10 @@ img {
 	line-height: 1em;
 	font-weight: 700;
 	text-indent: -1px;
-	color: $color-black;
+	color: $white;
 }
 .has-cover .post-title {
-	color: $color-white;
+	color: $white;
 }
 .post-title a {
 	text-decoration: none;
@@ -886,14 +779,14 @@ img {
 	z-index: 10;
 	display: block;
 	margin-bottom: 1.334em;
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
 	font-size: 0.75em;
 	font-weight: 400;
 	line-height: 1.334em;
 	opacity: 0.5;
 }
 .has-cover .post-meta {
-	color: $color-white;
+	color: $white;
 	opacity: 0.75;
 }
 .post-meta a {
@@ -932,7 +825,6 @@ img {
    ========================================================================== */
 
 .post-info {
-	margin-top: 6em;
 	overflow: hidden;
 }
 .post-share {
@@ -950,7 +842,7 @@ img {
 	line-height: 2em;
 	text-align: center;
 	text-decoration: none;
-	color: $color-white;
+	color: $white;
 	border-radius: 2px;
 	transition: all ease 0.3s;
 }
@@ -977,20 +869,19 @@ img {
 .post-tags {
 	max-width: 75%;
 	float: left;
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
 }
 .post-tags a {
 	display: inline-block;
 	margin: 0 0.334em 0.667em 0;
-	padding: 0.575em 1em;
-	background: $color-white;
-	border: 1px solid $primary-color;
+	padding: 0.575em 1em .75em 1em;
+	background: $darker-blue;
 	font-size: 0.75em;
 	font-weight: 500;
 	line-height: 1.334em;
 	text-align: center;
 	text-decoration: none;
-	color: $primary-color;
+	color: $white;
 	border-radius: 2em;
 	transition: all ease 0.3s;
 	box-sizing: border-box;
@@ -998,7 +889,7 @@ img {
 .post-tags a:hover,
 .post-tags a:focus {
 	background: $primary-color;
-	color: $color-white;
+	color: $white;
 }
 
 /* ==========================================================================
@@ -1010,8 +901,8 @@ img {
 	margin: 2em 0 0;
 	padding: 2em 0;
 	z-index: 10;
-	border-top: 1px solid $color-gray-90;
-	border-bottom: 1px solid $color-gray-90;
+	border-top: 1px solid $darker-blue;
+	border-bottom: 1px solid $darker-blue;
 	clear: both;
 }
 .post-author-avatar {
@@ -1021,7 +912,7 @@ img {
 	height: 5em;
 	margin: -0.5em 0 0 1.5em;
 	overflow: hidden;
-	background: $color-white;
+	background: $white;
 	border-radius: 10em;
 	box-sizing: border-box;
 
@@ -1039,10 +930,10 @@ img {
 }
 .post-author-bio {
 	padding-left: 10em;
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
     font-size: 0.75em;
     line-height: 1.334em;
-    
+
     @media only screen and (max-width: 480px) {
 	    padding-left: 0;
     }
@@ -1088,21 +979,21 @@ img {
 	position: relative;
 	padding: 2em 0;
 	text-align: center;
-	border-bottom: 1px solid $color-gray-90;
+	border-bottom: 1px solid $darker-blue;
 	box-sizing: border-box;
 }
 .post-comments.activated {
 	margin: -1px 0 0;
 	padding: 1em;
 	background: $color-gray-98;
-	border: 1px solid $color-gray-90;
+	border: 1px solid $darker-blue;
 }
 .post-comments-activate {
 	display: inline-block;
 	margin: 0;
 	padding: 0.5em 1.25em;
 	border: 1px solid $color-blue-80;
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
 	font-size: 0.75em;
 	line-height: 1.334em;
 	color: $color-blue-60;
@@ -1128,15 +1019,15 @@ img {
 	position: relative;
 	padding: 2em 0;
 	text-align: center;
-	border-bottom: 1px solid $color-gray-90;
+	border-bottom: 1px solid $darker-blue;
 	box-sizing: border-box;
-	
+
 	p {
 		margin: 1.25em 0 0;
 		font-size: 0.8em;
 		line-height: 1.25em;
 	}
-	
+
 	.post-subscribe-form {
 		display: flex;
 		justify-content: center;
@@ -1153,11 +1044,11 @@ img {
 			box-shadow: none;
 			box-sizing: border-box;
 			border-radius: 4em 0 0 4em;
-			
+
 			&:hover {
 				border-color: $color-blue-60;
 			}
-			
+
 			&:focus {
 				border-color: $color-red-95;
 			}
@@ -1168,8 +1059,8 @@ img {
 			font-size: 0.8em;
 			height: 2.5em;
 			padding: 0 1em;
-			font-weight: 500; 
-			color: $color-white;
+			font-weight: 500;
+			color: $white;
 			background: $color-red-95;
 			border: 0;
 			appearance: none;
@@ -1187,7 +1078,7 @@ img {
 
 .post-nav {
 	position: relative;
-	border-bottom: 1px solid $color-gray-90;
+	border-bottom: 1px solid $darker-blue;
 }
 .post-nav:after {
 	position: absolute;
@@ -1196,7 +1087,7 @@ img {
 	height: 100%;
 	left: 50%;
 	top: 0;
-	background: $color-gray-90;
+	background: $darker-blue;
 	z-index: 2;
 }
 .post-nav-next,
@@ -1230,7 +1121,7 @@ img {
 	line-height: 2em;
 	text-align: center;
 	transition: all ease-out 0.3s;
-	color: $color-gray-90;
+	color: $darker-blue;
 }
 .post-nav-next i {
 	left: 0;
@@ -1267,7 +1158,7 @@ img {
 	height: 2em;
 	margin: 0;
 	padding: 2em 0;
-	font-family: 'Fira Sans', sans-serif;
+	font-family: 'Roboto Slab', sans-serif;
 }
 .pagination:after {
 	position: absolute;
@@ -1277,7 +1168,7 @@ img {
 	bottom: 0;
 	margin-left: -16em;
 	content: '';
-	background: $color-gray-90;
+	background: $darker-blue;
 }
 .pagination a {
 	position: relative;
@@ -1351,16 +1242,13 @@ img {
    ========================================================================== */
 
 @media only screen and (max-width: 960px) {
-	#wrapper {
-		transform: translate3d(0,0,0);
-	}
-	.menu-active #wrapper {
-		padding-right: 0;
-		transform: translate3d(-16em,0,0);
-	}
 	.blog-logo,
 	.nav-button {
 		position: absolute;
+	}
+	.blog-logo {
+		width: 100%;
+		margin: 2em 0;
 	}
 	#blog-author {
 		margin: auto;
@@ -1377,9 +1265,12 @@ img {
 	}
 	.post-share,
 	.post-tags {
+		@include flex-horizontal;
 		max-width: none;
 		float: none;
-		margin: 0 0 2em;
+	}
+	.post-share {
+		margin-bottom: 1em;
 	}
 	.post-share a {
 		margin-left: 0;
@@ -1435,7 +1326,7 @@ img {
 		left: 0;
 		bottom: 0;
 		margin-bottom: -1px;
-		background: $color-gray-90;
+		background: $darker-blue;
 		z-index: 2;
 	}
 	.post-nav-next .post-nav-teaser {

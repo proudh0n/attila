@@ -1,24 +1,20 @@
 {{!< default}}
 <header id="blog-header"{{#if @blog.cover_image}} class="has-cover"{{/if}}>
 	<div class="inner">
-		<nav id="navigation">
-			{{#if @blog.logo}}
-			<span class="blog-logo">
-				<a href="{{@blog.url}}"><img src="{{@blog.logo}}" alt="Blog Logo" /></a>
-			</span>
-			{{/if}}
-			{{#if @blog.navigation}}
-			<span id="menu-button" class="nav-button">
-				<a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
-			</span>
-			{{/if}}
-		</nav>
-		<h1 class="blog-name"><a href="{{@blog.url}}">{{@blog.title}}</a></h1>
+		<h1 class="blog-name">
+			<a href="{{@blog.url}}">
+				<div class="big stackable logo">
+					<span>David</span>
+					<span>Morales</span>
+					<span>Cortés</span>
+				</div>
+			</a>
+		</h1>
 		{{#if @blog.description}}
 		<span class="blog-description">{{@blog.description}}</span>
 		{{/if}}
 		{{#if @blog.cover_image}}
-		<div class="blog-cover cover" style="background-image: url('{{img_url @blog.cover_image}}');"></div>
+		<div class="blog-cover cover" style="background-image: linear-gradient(rgba(0, 61, 91, 0.9) 0%, rgba(0, 61, 91, 0.9) 100%), url('{{img_url @blog.cover_image}}');"></div>
 		{{/if}}
 	</div>
 </header>
@@ -26,9 +22,9 @@
 <div id="index" class="container">
 
 	<main class="content" role="main">
-	
+
 		{{> "loop"}}
-	
+
 	</main>
 
 </div>
