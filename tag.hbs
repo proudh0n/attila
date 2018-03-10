@@ -22,10 +22,10 @@
 		{{/if}}
 		</span>
 		{{#if tag.feature_image}}
-		<div class="blog-cover cover" style="background-image: url('{{img_url tag.feature_image}}');"></div>
+		<div class="blog-cover cover" style="background-image: linear-gradient(rgba(0, 61, 91, 0.9) 0%, rgba(0, 61, 91, 1.0) 85%, rgba(0, 61, 91, 1.0) 100%), url('{{img_url tag.feature_image}}');"></div>
 		{{else}}
 		{{#if @blog.cover_image}}
-		<div class="blog-cover cover" style="background-image: url('{{img_url @blog.cover_image}}');"></div>
+		<div class="blog-cover cover" style="background-image: linear-gradient(rgba(0, 61, 91, 0.9) 0%, rgba(0, 61, 91, 1.0) 85%, rgba(0, 61, 91, 1.0) 100%), url('{{img_url @blog.cover_image}}');"></div>
 		{{/if}}
 		{{/if}}
 	</div>

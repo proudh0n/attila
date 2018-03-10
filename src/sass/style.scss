@@ -67,6 +67,10 @@ textarea {
 	transition: all ease-out 0.2s;
 }
 
+main.content {
+	background: $dark-blue;
+}
+
 a {
 	color: $white;
 	text-decoration: none;
@@ -223,7 +227,7 @@ dl dd {
 }
 
 mark {
-    background-color: $color-yellow-100;
+    background-color: $light-blue;
 }
 code, tt {
 	position: relative;
@@ -414,7 +418,7 @@ img {
 }
 #blog-header.has-cover {
 	padding: 9em 0 10em;
-	background: $darker-blue;
+	background: $dark-blue;
 	overflow: hidden;
 	text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
@@ -437,7 +441,7 @@ img {
 	left: 0;
 	top: 0;
 	z-index: 5;
-	background: no-repeat scroll center center / cover $darker-blue;
+	background: no-repeat scroll center center / cover $dark-blue;
 	animation: 0.5s ease-in forwards fadein;
 }
 .blog-cover:after {
@@ -448,8 +452,6 @@ img {
 	bottom: 0;
 	z-index: 8;
 	content: '';
-	background: -webkit-linear-gradient(top,  rgba(19,41,61,0) 0%,rgba(19,41,61,0.5) 100%);
-	background: linear-gradient(to bottom,  rgba(19,41,61,0) 0%,rgba(19,41,61,0.5) 100%);
 }
 .blog-logo {
 	position: absolute;
@@ -727,7 +729,7 @@ img {
 }
 #post-header.has-cover {
 	padding: 16em 0 2em;
-	background: $darker-blue;
+	background: $dark-blue;
 	overflow: hidden;
 	text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
@@ -738,7 +740,7 @@ img {
 	left: 0;
 	top: 0;
 	z-index: 5;
-	background: no-repeat scroll center center / cover $darker-blue;
+	background: no-repeat scroll center center / cover $dark-blue;
 	animation: 0.5s ease-in forwards fadein;
 }
 .post-cover:after {
@@ -749,8 +751,6 @@ img {
 	bottom: 0;
 	z-index: 8;
 	content: '';
-	background: -webkit-linear-gradient(top,  rgba(19,41,61,0) 0%,rgba(19,41,61,0.5) 100%);
-	background: linear-gradient(to bottom,  rgba(19,41,61,0) 0%,rgba(19,41,61,0.5) 100%);
 }
 .post {
 	position: relative;
