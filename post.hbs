@@ -12,9 +12,10 @@
 			<span class="blog-logo">
 				<a href="{{@blog.url}}">
 					<div class="logo">
-						<span>David</span>
-						<span>Morales</span>
-						<span>Cortés</span>
+						<span>Los</span>
+						<span>Archivos</span>
+						<span>De</span>
+						<span>Cronos</span>
 					</div>
 				</a>
 			</span>
@@ -28,13 +29,11 @@
 <main class="content" role="main">
 	<article class="{{post_class}}">
 		<div class="inner">
-
 			<section class="post-content">
 				{{content}}
 			</section>
 
 			<section class="post-info">
-
 				<div class="post-share">
 					<a class="twitter" href="https://twitter.com/share?text={{title}}&url={{url absolute="true"}}" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
 						<i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
@@ -47,29 +46,23 @@
 					</a>
 					<div class="clear"></div>
 				</div>
-
 				<aside class="post-tags">
 					{{tags separator=" "}}
 				</aside>
-
 				<div class="clear"></div>
-
 			</section>
-
 
 			<section class="post-comments">
 				<a id="show-disqus" class="post-comments-activate">Show Comments</a>
-			    <div id="disqus_thread"></div>
+				<div id="disqus_thread"></div>
 			</section>
 
-            {{#if @labs.subscribers}}
-            <section class="post-subscribe">
-                {{subscribe_form placeholder="Your email address" form_class="post-subscribe-form" input_class="post-subscribe-input" button_class="post-subscribe-button"}}
-                <p>Get the latest posts delivered right to your inbox.</p>
-            </section>
-            {{/if}}
-
-
+			{{#if @labs.subscribers}}
+			<section class="post-subscribe">
+				{{subscribe_form placeholder="Your email address" form_class="post-subscribe-form" input_class="post-subscribe-input" button_class="post-subscribe-button"}}
+				<p>Get the latest posts delivered right to your inbox.</p>
+			</section>
+			{{/if}}
 		</div>
 	</article>
 </main>
