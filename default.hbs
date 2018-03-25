@@ -27,6 +27,18 @@
 			</section>
 		</div>
 	</footer>
+	<script>
+		window.onload = function() {
+			var postCount = $('.post').length;
+			if(postCount <= 10) {
+				$('nav.pagination').remove();
+
+				if(postCount === 0) {
+					$('#blog-header').css('padding', '47.5vh 0');
+				}
+			}
+		}
+	</script>
 	<script type="text/javascript" src="{{asset "js/script.js"}}"></script>
 	{{ghost_foot}}
 </body>

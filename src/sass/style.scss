@@ -390,15 +390,26 @@ img {
 		font-size: 5rem;
 	}
 
-    &.hidden {
-        pointer-events: none;
-    }
+	&.hidden {
+		pointer-events: none;
+	}
 
-    span {
-        &:nth-of-type(2) {
-            font-weight: 300;
-        }
-    }
+	&.alternative {
+		span {
+			&:nth-of-type(1),
+			&:nth-of-type(3) {
+				font-weight: 300;
+			}
+		}
+	}
+
+	&:not(.alternative) {
+		span {
+			&:nth-of-type(2) {
+				font-weight: 300;
+			}
+		}
+	}
 }
 
 #blog-header {
