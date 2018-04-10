@@ -996,14 +996,12 @@ img {
 .post-comments.activated {
 	margin: -1px 0 0;
 	padding: 1em;
-	background: $color-gray-98;
-	border: 1px solid $darker-blue;
 }
 .post-comments-activate {
 	display: inline-block;
 	margin: 0;
 	padding: 0.5em 1.25em;
-	border: 1px solid $color-blue-80;
+	border: 1px solid $light-blue;
 	font-family: 'Roboto Slab', sans-serif;
 	font-size: 0.75em;
 	line-height: 1.334em;
